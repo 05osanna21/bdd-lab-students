@@ -15,63 +15,46 @@ import static pages.BasePage.getDriver;
 @Getter
 public class ProductBox {
     private WebDriver webDriver;
-    @FindBy(xpath = ".//h4//a")
-    private String name;
 
-    @FindBy(xpath = ".//div[@class='image']//a")
-    private WebElement image;
+        private WebDriver driver;
+        private WebElement image;
+        private String name;
+        private String description;
+        private String price;
+        private WebElement addToCarButton;
+        private WebElement addToWishListButton;
+        private WebElement compareButton;
 
-    @FindBy(xpath = ".//div[@class='caption']//p[1]")
-    private String description;
+        public ProductBox(WebDriver webDriver) {
+            this.webDriver = webDriver;
+        }
 
-    @FindBy(xpath = ".//span[@class='price-tax']")
-    private String price;
-
-    @FindBy(xpath = ".//i[contains(@class,'fa-heart')]/parent::button")
-    private WebElement addToCarButton;
-
-    @FindBy(xpath = ".//i[contains(@class,'fa-shopping-cart')]/parent::button")
-    private WebElement addToWishListButton;
-
-    @FindBy(xpath = ".//i[contains(@class,'fa-exchange')]/parent::button")
-    private WebElement compareButton;
-
-    public ProductBox() {
-        PageFactory.initElements((WebDriver) getDriver(), this);
-    }
-
-
-    public ProductBox(WebDriver webDriver) {
-        this.webDriver = webDriver;
-    }
-
-    public ProductBox(WebElement image, String name, String description, String price, WebElement addToCarButton, WebElement addToWishButton, WebElement compareButton) {
-        this.image = image;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.addToCarButton = addToCarButton;
-        this.addToWishListButton = addToWishListButton;
-        this.compareButton = compareButton;
-    }
-
+        public ProductBox(WebElement image, String name, String description, String price, WebElement addToCarButton, WebElement addToWishButton, WebElement compareButton) {
+            this.image = image;
+            this.name = name;
+            this.description = description;
+            this.price = price;
+            this.addToCarButton = addToCarButton;
+            this.addToWishListButton = addToWishButton;
+            this.compareButton = compareButton;
+        }
 
 
     public List<ProductBox> getAllItems(By boxContainers) {
-        List<ProductBox> productBoxes = new ArrayList<>();
-        List<WebElement> boxElements = webDriver.findElements(boxContainers);
-        for (WebElement boxElement : boxElements) {
-            String name = boxElement.getText();
-            WebElement image = boxElement;
-            String description = boxElement.getText();
-            String price = boxElement.getText();
-            WebElement addToWishListButton = boxElement;
-            WebElement addToCartButton = boxElement;
-            WebElement compareButton = boxElement;
-            ProductBox productBox = new ProductBox(image, name, description, price, addToCartButton,
-                    addToWishListButton, compareButton);
-            productBoxes.add(productBox);
+            List<ProductBox> productBoxes = new ArrayList<>();
+            List<WebElement> boxElements = webDriver.findElements(boxContainers);
+            for (WebElement boxElement : boxElements) {
+                String name = boxElement.findElement(By.xpath(".//h4//a")).getText();
+                WebElement image = boxElement.findElement(By.xpath(".//div[@class='image']//a"));
+                String description = boxElement.findElement(By.xpath(".//div[@class='caption']//p[1]")).getText();
+                String price = boxElement.findElement(By.xpath(".//span[@class='price-tax']")).getText();
+                WebElement addToWishListButton = boxElement.findElement(By.xpath(".//i[contains(@class,'fa-shopping-cart')]/parent::button"));
+                WebElement addToCartButton = boxElement.findElement(By.xpath(".//i[contains(@class,'fa-heart')]/parent::button"));
+                WebElement compareButton = boxElement.findElement(By.xpath(".//i[contains(@class,'fa-exchange')]/parent::button"));
+                ProductBox productBox = new ProductBox(image, name, description, price, addToCartButton,
+                        addToWishListButton, compareButton);
+                productBoxes.add(productBox);
+            }
+            return productBoxes;
         }
-        return productBoxes;
     }
-}

@@ -11,7 +11,6 @@ import pages.ProductsPage;
 
 public class TopMenu  {
     private WebDriver webDriver;
-    TopMenu topMenu = new TopMenu();
 
     public TopMenu(WebDriver driver) {
         webDriver = driver;
@@ -33,14 +32,6 @@ public class TopMenu  {
     private By scanners = By.xpath("//ul[@class='list-unstyled']//a[contains(text(), 'Scanners')]");
     private By webCameras = By.xpath("//ul[@class='list-unstyled']//a[contains(text(), 'Web Cameras')]");
     private By showAllComponents = By.xpath("//div[@class=\"dropdown-menu\"]//a[text()= 'Show All Components']");
-
-    public TopMenu() {
-
-    }
-    @And("I select {string} in SubNavbarMenu")
-    public void iSelectMONITORSInSubNavbarMenu() {
-        topMenu.selectSubNavbarMenuСomponents(SubNavbarMenuСomponents.MONITORS);
-    }
 
     public void hoverMouseOnComponents(NavbarMenu category) {
         Actions actions = new Actions(webDriver);

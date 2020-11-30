@@ -1,5 +1,7 @@
 package pages;
 
+import components.TopBar;
+import components.TopMenu;
 import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,6 +13,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 @Getter
 public abstract class BasePage {
+
+  private TopMenu topMenu;
+
+  public BasePage(){
+    topMenu = new TopMenu(driver);
+  }
+
+  public TopMenu getTopMenu() {
+    return topMenu;
+  }
 
   protected static WebDriver driver;
 
@@ -25,6 +37,10 @@ public abstract class BasePage {
   public WebElement waitUntilVisible(WebElement element, int time) {
     return new WebDriverWait(driver, time)
         .until(ExpectedConditions.visibilityOf(element));
+  }
+  public WebElement waitUntilVisible(By locator, int time) {
+    return new WebDriverWait(driver, time)
+            .until(ExpectedConditions.visibilityOfElementLocated(locator));
   }
 
   public WebElement waitUntilClickable(WebElement element, int time) {

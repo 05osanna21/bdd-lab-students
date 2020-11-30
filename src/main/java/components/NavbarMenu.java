@@ -1,12 +1,24 @@
 package components;
 
+
 public enum NavbarMenu {
-    DESKTOPS,
-    LAPTOP_AND_NOTEBOOKS,
-    COMPONENTS,
-    TABLETS,
-    SOFTWARE,
-    PHONE_AND_PDAS,
-    CAMERAS,
-    MP3_PLAYERS;
+    DESKTOPS("Desktop"),
+    LAPTOP_AND_NOTEBOOKS("Laptop_and_notebooks"),
+    COMPONENTS("Components"),
+    TABLETS("Tablets"),
+    SOFTWARE("Software"),
+    PHONE_AND_PDAS("Phone_and_pdas"),
+    CAMERAS("Cameras"),
+    MP3_PLAYERS("Mp3_players");
+
+    private String menu;
+
+    public String getMenu() {
+        return menu;
+    }
+
+
+    NavbarMenu(String menu) {
+        this.menu = menu;
+    }
 }
