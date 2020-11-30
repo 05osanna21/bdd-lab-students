@@ -15,7 +15,7 @@ public class DriverManager {
   }
 
   public static void quiteDriver() {
-    BasePage.getDriver().quit();
+   // BasePage.getDriver().quit();
   }
 
 }

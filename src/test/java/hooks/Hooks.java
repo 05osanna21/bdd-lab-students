@@ -12,6 +12,6 @@ public class Hooks {
     }
     @After
     public void quiteBrowser(){
-        DriverManager.quiteDriver();
+        //DriverManager.quiteDriver();
     }
 }

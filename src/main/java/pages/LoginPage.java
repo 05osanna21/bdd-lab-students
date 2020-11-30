@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage extends BasePage {
 
 
-    @FindBy(xpath = "//div[@id='search']//input[@type='text']")
+    @FindBy(xpath = "//input[@id='input-email']")
     private WebElement emailField;
 
     @FindBy(xpath = "//div[@class='form-group']//input[@type='password']")
@@ -15,15 +15,11 @@ public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//input[@type='submit']")
     private WebElement loginButton;
-    @FindBy(xpath = "//li//a[text()='Login']")
-    private WebElement login;
+
 
     public LoginPage() {
         PageFactory.initElements(getDriver(), this);
     }
-
-
-
 
     public void setEmailAdress(String email) {
         waitUntilVisible(emailField, 5).sendKeys(email);
@@ -36,8 +32,5 @@ public class LoginPage extends BasePage {
 
     public void clickLoginButton() {
         waitUntilClickable(loginButton,5).click();
-    }
-    public void clickLogin() {
-        waitUntilVisible(login,5).click();
     }
 }

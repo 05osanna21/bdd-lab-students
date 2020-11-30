@@ -1,10 +1,13 @@
 package stepdefs;
 
 import io.cucumber.java.en.Then;
+import pages.PersonalCabinetPage;
 
 public class PersonalCabinetPageStepDefs {
+    PersonalCabinetPage personalCabinetPage = new PersonalCabinetPage();
+
     @Then("I see {string} in the Personal Cabinet Page")
-    public void i_see_in_the_congr_page(String title) {
-        System.out.println("111");
+    public void iSeeMyAccountInThePersonalCabinetPage(String title) {
+        personalCabinetPage.findTitle(title);
     }
 }
