@@ -14,7 +14,6 @@ public enum SubNavbarMenuComponents {
         return subComponent;
     }
 
-
     SubNavbarMenuComponents(String menu) {
         this.subComponent = subComponent;
     }

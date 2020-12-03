@@ -1,5 +1,6 @@
 package components;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -15,12 +16,12 @@ public class TopBar extends BasePage {
 
     public TopBar(WebDriver driver) {
         webDriver = driver;
-        wait = new WebDriverWait(webDriver,5);
+        wait = new WebDriverWait(webDriver, 5);
         actions = new Actions(webDriver);
     }
 
     public TopBar() {
-        PageFactory.initElements(getDriver(),this);
+        PageFactory.initElements(getDriver(), this);
     }
 
     @FindBy(xpath = "//span[@ class='hidden-xs hidden-sm hidden-md' and text()='My Account']")
@@ -34,11 +35,14 @@ public class TopBar extends BasePage {
 
     public void clickIconMyAccount() {
         waitUntilVisible(myAccount, 5).click();
-}
-    public void clickLogin() {
-        waitUntilVisible(login,5).click();
     }
-    public void selectRegister(){
-        waitUntilVisible(registerLink,5).click();
+
+    @Step
+    public void clickLogin() {
+        waitUntilVisible(login, 5).click();
+    }
+
+    public void selectRegister() {
+        waitUntilVisible(registerLink, 5).click();
     }
 }

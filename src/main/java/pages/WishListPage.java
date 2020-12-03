@@ -25,7 +25,7 @@ public class WishListPage extends BasePage {
 
 
     public List<MyWishListItems> getAllItemsFromWishList() {
-        return myWishListItems.getAllItems((By) myWishLIstTable);
+        return myWishListItems.getAllItems(By.xpath("//div[@class='table-responsive']//table//tbody"));
     }
 
     public List<String> getNamesFromWishListItems() {
