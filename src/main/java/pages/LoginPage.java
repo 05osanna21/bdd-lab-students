@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static config.Screenshots.makeScreenshot;
+
 public class LoginPage extends BasePage {
 
 
@@ -27,9 +29,10 @@ public class LoginPage extends BasePage {
         waitUntilVisible(emailField, 5).sendKeys(email);
     }
 
-    @Step
+    @Step("Password")
     public void setPassword(String password) {
         waitUntilVisible(passwordField,5).sendKeys(password);
+        makeScreenshot();
 
     }
 
