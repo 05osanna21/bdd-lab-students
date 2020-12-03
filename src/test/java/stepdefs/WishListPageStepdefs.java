@@ -1,13 +1,11 @@
 package stepdefs;
 
 import components.NavbarMenu;
-import components.ProductBox;
-import components.SubNavbarMenuСomponents;
+import components.SubNavbarMenuComponents;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import pages.LoginPage;
 import pages.ProductsPage;
-import pages.WishListPage;
 
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class WishListPageStepdefs {
 
     @And("I select {string} in SubNavbarMenu")
     public void iSelectMONITORSInSubNavbarMenu(String subMenu) {
-        SubNavbarMenuСomponents subNavbarMenuСomponents = SubNavbarMenuСomponents.valueOf(subMenu);
+        SubNavbarMenuComponents subNavbarMenuСomponents = SubNavbarMenuComponents.valueOf(subMenu);
         loginPage.getTopMenu().selectSubNavbarMenuСomponents(subNavbarMenuСomponents);
     }
 

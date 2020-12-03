@@ -1,6 +1,6 @@
 package components;
 
-public enum SubNavbarMenuСomponents {
+public enum SubNavbarMenuComponents {
     MICE_AND_TRACKBALLS("Nice_and_trackballs"),
     MONITORS("Monitors"),
     PRINTERS("Printers"),
@@ -15,7 +15,7 @@ public enum SubNavbarMenuСomponents {
     }
 
 
-    SubNavbarMenuСomponents(String menu) {
+    SubNavbarMenuComponents(String menu) {
         this.subComponent = subComponent;
     }
 }

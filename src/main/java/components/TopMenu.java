@@ -1,12 +1,10 @@
 package components;
 
-import io.cucumber.java.en.And;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.BasePage;
 import pages.ProductsPage;
 
 public class TopMenu  {
@@ -66,7 +64,7 @@ public class TopMenu  {
         actions.build().perform();
     }
 
-    public void selectSubNavbarMenuСomponents(SubNavbarMenuСomponents subcategories){
+    public void selectSubNavbarMenuСomponents(SubNavbarMenuComponents subcategories){
         WebDriverWait wait = new WebDriverWait(webDriver,5);
         switch (subcategories){
             case MICE_AND_TRACKBALLS:
