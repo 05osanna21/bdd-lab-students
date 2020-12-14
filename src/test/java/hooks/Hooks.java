@@ -6,10 +6,12 @@ import io.cucumber.java.Before;
 
 public class Hooks {
 
+
     @Before
     public void initDriver(){
         DriverManager.setUpDriver();
     }
+
     @After
     public void quiteBrowser(){
         DriverManager.quiteDriver();

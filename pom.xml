@@ -11,6 +11,7 @@
     <aspectj.version>1.9.6</aspectj.version>
   </properties>
   <build>
+
     <pluginManagement>
       <plugins>
         <plugin>
@@ -20,16 +21,29 @@
           <configuration>
             <testFailureIgnore>true</testFailureIgnore>
             <includes>**/Runner.java</includes>
+
             <argLine>
               -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
             </argLine>
+
+              <parallel>methods</parallel>
+              <useUnlimitedThreads>true</useUnlimitedThreads>
+              <threadCount>2</threadCount>
+              <perCoreThreadCount>false</perCoreThreadCount>
             <systemProperties>
               <property>
                 <name>allure.results.directory</name>
                 <value>${project.build.directory}/reports/allure-results</value>
               </property>
+
+              <property>
+                <name>browser</name>
+                <value>${browser}</value>
+              </property>
+
             </systemProperties>
           </configuration>
+
         <dependencies>
           <dependency>
             <groupId>org.aspectj</groupId>
@@ -38,6 +52,7 @@
           </dependency>
         </dependencies>
         </plugin>
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -47,6 +62,7 @@
             <target>1.8</target>
           </configuration>
         </plugin>
+
         <plugin>
           <groupId>io.qameta.allure</groupId>
           <artifactId>allure-maven</artifactId>

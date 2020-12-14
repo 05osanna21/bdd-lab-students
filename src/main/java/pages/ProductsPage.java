@@ -14,7 +14,7 @@ public class ProductsPage extends BasePage {
 
    private ProductBox productBox;
    public ProductsPage (){
-       productBox = new ProductBox(driver);
+       productBox = new ProductBox(getDriver());
 
    }
 
@@ -28,7 +28,7 @@ public class ProductsPage extends BasePage {
                     clickWithJs(box.getAddToWishListButton());
                     waitUntilVisible(By.xpath("//div[contains(@class,'alert-success')]//a[1]"), 10);
                     waitUntilTextWillPresent(By.xpath("//div[contains(@class,'alert-success')]//a[1]"), 10, box.getName());
-                    driver.findElement(By.xpath("//button[@class='close']")).click();
+                    getDriver().findElement(By.xpath("//button[@class='close']")).click();
                     waitInvisibilityOf(By.xpath("//div[contains(@class,'alert-success')]//a[1]"), 3);
                 }
             }
